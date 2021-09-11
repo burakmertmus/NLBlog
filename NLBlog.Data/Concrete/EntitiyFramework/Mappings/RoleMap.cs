@@ -29,9 +29,20 @@ namespace NLBlog.Data.Concrete.EntitiyFramework.Mappings
             builder.Property(r => r.ModifiedDate).IsRequired();
             builder.Property(r => r.IsActive).IsRequired();
             builder.Property(r => r.IsDeleted).IsRequired();
-            builder.Property(r => r.Node).HasMaxLength(500);
-
+            builder.Property(r => r.Note).HasMaxLength(500);
             builder.ToTable("Roles");
+            builder.HasData(new Role {
+            Id=1,
+            Name="Admin",
+            Description="Admin Rolü, Tüm Haklara Sahiptir.",
+            IsActive=true,
+            IsDeleted=false,
+            CreatedByName="InitialCreate",
+            CreatedDate=DateTime.Now,
+            ModifiedByName="InitialCraete",
+            ModifiedDate=DateTime.Now,
+            Note="Admin Rolüdür."
+            });
 
         }
     }
