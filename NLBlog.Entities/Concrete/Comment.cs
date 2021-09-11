@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using NLBLog.Shared.Abstract;
 namespace NLBlog.Entities.Concrete
 {
-    class Comment
+    public class Comment
     {
         public string Text { get; set; }
         public int ArticleId { get; set; }

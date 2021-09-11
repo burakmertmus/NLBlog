@@ -11,7 +11,7 @@ namespace NLBLog.Shared.Data.Abstact
     {
         Task<T> GetAsync(Expression<Func<T,bool>> predicate,params Expression<Func<T,object>>[] includeProperties); //var kullanıcı = repository.GetAsync(p=>p.Id=12)
 
-        Task<IList<T>> GetAllAsync(Expression<Func<T, bool>> predicateİ=null,
+        Task<IList<T>> GetAllAsync(Expression<Func<T, bool>> predicate=null,
             params Expression<Func<T, object>>[] includeProperties);
         Task AddAsync (T entity);
         Task UpdateAsync(T entity);
