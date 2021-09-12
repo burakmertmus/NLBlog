@@ -1,11 +1,11 @@
-﻿using NLBLog.Shared.Utilities.Results.ComplexTypes;
+﻿using NLBlog.Shared.Utilities.Results.ComplexTypes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NLBLog.Shared.Utilities.Results.Abstract
+namespace NLBlog.Shared.Utilities.Results.Abstract
 {
     public interface IResult
     {

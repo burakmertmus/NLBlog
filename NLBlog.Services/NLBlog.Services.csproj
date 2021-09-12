@@ -11,7 +11,7 @@
   <ItemGroup>
     <ProjectReference Include="..\NLBlog.Data\NLBlog.Data.csproj" />
     <ProjectReference Include="..\NLBlog.Entities\NLBlog.Entities.csproj" />
-    <ProjectReference Include="..\NLBLog.Shared\NLBLog.Shared.csproj" />
+    <ProjectReference Include="..\NLBlog.Shared\NLBlog.Shared.csproj" />
   </ItemGroup>
 
 </Project>

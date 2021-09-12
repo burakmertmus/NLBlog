@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using NLBlog.Entities.Concrete;
-using NLBLog.Shared.Data.Abstact;
+using NLBlog.Shared.Data.Abstact;
 
 namespace NLBlog.Data.Abstract
 {

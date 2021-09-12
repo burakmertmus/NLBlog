@@ -1,4 +1,4 @@
-﻿using NLBLog.Shared.Entities.Abstact;
+﻿using NLBlog.Shared.Entities.Abstact;
 using System;
 using System.Collections.Generic;
 using System.Linq;

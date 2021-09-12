@@ -1,5 +1,5 @@
 ﻿using NLBlog.Entities.Concrete;
-using NLBLog.Shared.Entities.Abstract;
+using NLBlog.Shared.Entities.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Linq;

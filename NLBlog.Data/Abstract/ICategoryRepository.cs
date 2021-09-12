@@ -1,5 +1,5 @@
 ﻿using NLBlog.Entities.Concrete;
-using NLBLog.Shared.Data.Abstact;
+using NLBlog.Shared.Data.Abstact;
 using System;
 using System.Collections.Generic;
 using System.Linq;

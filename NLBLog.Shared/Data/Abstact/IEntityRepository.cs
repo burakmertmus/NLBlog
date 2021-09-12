@@ -1,4 +1,4 @@
-﻿using NLBLog.Shared.Entities.Abstact;
+﻿using NLBlog.Shared.Entities.Abstact;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NLBLog.Shared.Data.Abstact
+namespace NLBlog.Shared.Data.Abstact
 {
     public interface IEntityRepository<T> where T:class,IEntity,new()
     {

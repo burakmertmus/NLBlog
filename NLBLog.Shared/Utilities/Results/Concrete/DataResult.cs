@@ -1,12 +1,12 @@
-﻿using NLBLog.Shared.Utilities.Results.Abstract;
-using NLBLog.Shared.Utilities.Results.ComplexTypes;
+﻿using NLBlog.Shared.Utilities.Results.Abstract;
+using NLBlog.Shared.Utilities.Results.ComplexTypes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NLBLog.Shared.Utilities.Results.Concrete
+namespace NLBlog.Shared.Utilities.Results.Concrete
 {
     public class DataResult<T> : IDataResult<T>
     {

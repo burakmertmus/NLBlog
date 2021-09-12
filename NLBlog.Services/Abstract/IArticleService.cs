@@ -1,6 +1,6 @@
 ﻿using NLBlog.Entities.Concrete;
 using NLBlog.Entities.Dtos;
-using NLBLog.Shared.Utilities.Results.Abstract;
+using NLBlog.Shared.Utilities.Results.Abstract;
 using System;
 using System.Collections.Generic;
 using System.Linq;

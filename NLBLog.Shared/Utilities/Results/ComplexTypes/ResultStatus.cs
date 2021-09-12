@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NLBLog.Shared.Utilities.Results.ComplexTypes
+namespace NLBlog.Shared.Utilities.Results.ComplexTypes
 {
     public enum  ResultStatus
     {
