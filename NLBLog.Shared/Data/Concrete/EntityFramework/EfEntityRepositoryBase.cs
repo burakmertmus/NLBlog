@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using NLBLog.Shared.Data.Abstact;
+using NLBLog.Shared.Entities.Abstact;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NLBLog.Shared.Abstract.Concrete.EntityFramework
+namespace NLBLog.Shared.Data.Concrete.EntityFramework
 {
     public class EfEntityRepositoryBase<TEntity> : IEntityRepository<TEntity>
         where TEntity : class, IEntity, new()

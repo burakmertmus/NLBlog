@@ -1,9 +1,9 @@
-﻿using System;
+﻿using NLBLog.Shared.Entities.Abstact;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using NLBLog.Shared.Abstract;
 namespace NLBlog.Entities.Concrete
 {
     public class Comment:EntityBase,IEntity

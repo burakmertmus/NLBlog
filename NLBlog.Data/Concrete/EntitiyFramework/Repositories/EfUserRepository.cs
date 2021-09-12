@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using NLBlog.Data.Abstract;
 using NLBlog.Entities.Concrete;
-using NLBLog.Shared.Abstract.Concrete.EntityFramework;
+using NLBLog.Shared.Data.Concrete.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.Linq;

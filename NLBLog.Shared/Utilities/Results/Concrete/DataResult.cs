@@ -10,6 +10,7 @@ namespace NLBLog.Shared.Utilities.Results.Concrete
 {
     public class DataResult<T> : IDataResult<T>
     {
+        
         public DataResult(ResultStatus resultStatus, T data)
         {
             ResultStatus = resultStatus;

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NLBLog.Shared.Abstract
+namespace NLBLog.Shared.Entities.Abstact
 {
     public abstract class EntityBase
     {
