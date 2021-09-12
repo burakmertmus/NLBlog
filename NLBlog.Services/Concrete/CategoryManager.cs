@@ -90,7 +90,11 @@ namespace NLBlog.Services.Concrete
                 });
             }
 
-            return new DataResult<CategoryListDto>(ResultStatus.Error,message:"Hiç Kategori bulunamadı",data:null);
+            return new DataResult<CategoryListDto>(ResultStatus.Error,message:"Hiç Kategori bulunamadı",data:new CategoryListDto { 
+            Categories=null,
+                ResultStatus = ResultStatus.Error,
+                Message="Hiç bir kategori bulunamadı."
+            });
         }
 
         public async Task<IDataResult<CategoryListDto>> GetAllByNonDeleted()
