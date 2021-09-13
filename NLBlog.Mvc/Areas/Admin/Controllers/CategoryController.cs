@@ -36,9 +36,10 @@ namespace NLBlog.Mvc.Areas.Admin.Controllers
         [HttpPost]
         public async Task<IActionResult> Add(CategoryAddDto categoryAddDto)
         {
+            
             if (ModelState.IsValid)
             {
-                var result = await _categoryService.Add(categoryAddDto,"Burak Mert Muş");
+                var result = await _categoryService.Add(categoryAddDto,createdByName:"Burak Mert Muş");
                 if (result.ResultStatus==ResultStatus.Success)
                 {
                     var categoryAddAjaxModel = JsonSerializer.Serialize(new CategoryAddAjaxViewModel { 
@@ -53,7 +54,6 @@ namespace NLBlog.Mvc.Areas.Admin.Controllers
             {
                 CategoryAddPartial = await this.RenderViewToStringAsync("_CategoryAddPartial", categoryAddDto)
             });
-
             return Json(categoryAddAjaxErrorModel);
 
            

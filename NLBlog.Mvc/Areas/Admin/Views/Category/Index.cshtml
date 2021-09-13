@@ -90,7 +90,7 @@
                             },
                             className: 'btn btn-success',
                             action: function (e, dt, node, config) {
-                                
+
                             }
                         },
                         {
@@ -326,7 +326,45 @@
                     });
                     @* Ajax GET / Getting the _CategoryAddPartial as Modal form ends here *@
                     @* Ajax POST / Posting the FormData as CategoryAddDto starts here *@
-
+                    placeHolderDiv.on('click',
+                        '#btnSave',
+                        function (event) {
+                            event.preventDefault();
+                            let form = $('#form-category-add');
+                            let actionUrl = form.attr('action');
+                            let dataToSend = form.serialize();
+                            $.post(actionUrl, dataToSend).done(function (data) {
+                                let categoryAddAjaxModel = jQuery.parseJSON(data);
+                                console.log(categoryAddAjaxModel);
+                                let newFormBody = $('.modal-body', categoryAddAjaxModel.CategoryAddPartial);
+                                placeHolderDiv.find('.moda-body').replaceWith(newFormBody);
+                                
+                                let isValid = newFormBody.find('[name="IsValid"]').val() === 'True';
+                                console.log(isValid);
+                                if (isValid) {
+                                    
+                                    placeHolderDiv.find('.modal').modal('hide');
+                                    let newTableRow = `<tr>
+                                <td>${categoryAddAjaxModel.CategoryDto.Category.Id}</td>
+                                <td>${categoryAddAjaxModel.CategoryDto.Category.Name}</td>
+                                <td>${categoryAddAjaxModel.CategoryDto.Category.Description}</td>
+                                <td>${categoryAddAjaxModel.CategoryDto.Category.IsActive}</td>
+                                <td>${categoryAddAjaxModel.CategoryDto.Category.IsDeleted}</td>
+                                <td>${categoryAddAjaxModel.CategoryDto.Category.Note}</td>
+                                <td>${categoryAddAjaxModel.CategoryDto.Category.CreatedDate}</td>
+                                <td>${categoryAddAjaxModel.CategoryDto.Category.CreatedByName}</td>
+                                <td>${categoryAddAjaxModel.CategoryDto.Category.ModifiedDate} </td>
+                                <td>${categoryAddAjaxModel.CategoryDto.Category.ModifiedByName}</td>
+                                </tr>`;
+                                    
+                                    let newTableRowObject = $(newTableRow);
+                                    newTableRowObject.hide();
+                                    $('#categoriesTable').append(newTableRowObject);
+                                    newTableRowObject.fadeIn(3500);
+                                    toastr.success(`${categoryAddAjaxModel.CategoryDto.Message}`, 'Başarılı İşlem!');
+                                }
+                            });
+                        });
                 });
 
             });
