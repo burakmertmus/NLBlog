@@ -24,8 +24,9 @@ namespace NLBlog.Services.Concrete
             _mapper = mapper;
         }
 
-        public async Task<IResult> Add(CategoryAddDto categoryAddDto, string createdByName)
+        public async Task<IDataResult<CategoryDto>> Add(CategoryAddDto categoryAddDto, string createdByName)
         {
+
             //await _unitOfWork.Categories.AddAsync(
             //    new Category 
             //{
@@ -43,13 +44,36 @@ namespace NLBlog.Services.Concrete
             var category = _mapper.Map<Category>(categoryAddDto);
             category.CreatedByName = createdByName;
             category.ModifiedByName = createdByName;
-            await _unitOfWork.Categories.AddAsync(category);
+            var addedCategory = await _unitOfWork.Categories.AddAsync(category);
             await _unitOfWork.SaveAsync();
-                
+
 
 
             //await _unitOfWork.SaveAsync();
-            return new Result(ResultStatus.Success,message:$"{categoryAddDto.Name} adlı kategori başarı ile eklenmiştir.");
+            return new DataResult<CategoryDto>(ResultStatus.Success, message: $"{categoryAddDto.Name} adlı kategori başarı ile eklenmiştir.",
+                data: new CategoryDto
+                {
+                    Category = addedCategory,
+                    ResultStatus=ResultStatus.Success,
+                    Message=$"{categoryAddDto.Name} adlı kategori başarı ile eklenmiştir."
+                });
+        }
+
+        public async Task<IDataResult<CategoryDto>> Update(CategoryUpdateDto categoryUpdateDto, string modifiedByName)
+        {
+
+            var category = _mapper.Map<Category>(categoryUpdateDto);
+            category.ModifiedByName = modifiedByName;
+            var updatedCategory = await _unitOfWork.Categories.UpdateAsync(category);
+            await _unitOfWork.SaveAsync();
+
+            return new DataResult<CategoryDto>(ResultStatus.Success, message: $"{categoryUpdateDto.Name} adlı kategori başarı ile güncellenmiştir.",
+                data: new CategoryDto
+                {
+                    Category = updatedCategory,
+                    ResultStatus = ResultStatus.Success,
+                    Message = $"{categoryUpdateDto.Name} adlı kategori başarı ile güncellenmiştir."
+                });
         }
 
         public async Task<IResult> Delete(int categoryId,string modifiedByName)
@@ -80,8 +104,14 @@ namespace NLBlog.Services.Concrete
                     
             });
             }
-            return new DataResult<CategoryDto>(ResultStatus.Error, message: "Kategori bulunamadı.",data:null);
+            return new DataResult<CategoryDto>(ResultStatus.Error, message: "Kategori bulunamadı.",data:
+                new CategoryDto {
+                Category = null,
+                ResultStatus = ResultStatus.Error,
+                Message= "Kategori bulunamadı."
+            });
         }
+
 
         public async Task<IDataResult<CategoryListDto>> GetAll()
         {
@@ -143,16 +173,7 @@ namespace NLBlog.Services.Concrete
             return new DataResult<Category>(ResultStatus.Error, message: "Kategori bulunamadı.", data: null);
         }
 
-        public async Task<IResult> Update(CategoryUpdateDto categoryUpdateDto, string modifiedByName)
-        {
-            
-            var category = _mapper.Map<Category>(categoryUpdateDto);
-            category.ModifiedByName = modifiedByName;
-            await _unitOfWork.Categories.UpdateAsync(category);
-            await _unitOfWork.SaveAsync();
-                
-            return new Result(ResultStatus.Success, message: $"{categoryUpdateDto.Name} adlı kategori başarı ile güncellenmiştir.");
-        }
+       
 
 
     }
