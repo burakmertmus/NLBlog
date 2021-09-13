@@ -7,7 +7,7 @@
 
 @if (Model.ResultStatus == ResultStatus.Success)
 {
-
+    <div id="modalPlaceHolder" aria-hidden="true"></div>
     <div class="card mb-4 mt-2">
         <div class="card-header">
             <i class="fas fa-table mr-1"></i>
@@ -85,9 +85,12 @@
                     buttons: [
                         {
                             text: 'Ekle',
+                            attr: {
+                                id: "btnAdd",
+                            },
                             className: 'btn btn-success',
                             action: function (e, dt, node, config) {
-                                alert('Ekle Butonuna basıldı');
+                                
                             }
                         },
                         {
@@ -210,7 +213,7 @@
                             },
                             "data": "Veri",
                             "deleteTitle": "Filtreleme kuralını silin",
-                            "leftTitle": "Kriteri dışarı çıkart",
+                            "leftTitle": "UrlKriteri dışarı çıkart",
                             "logicAnd": "ve",
                             "logicOr": "veya",
                             "rightTitle": "Kriteri içeri al",
@@ -307,6 +310,25 @@
 
 
                 });
+
+                @* Data Table ends here *@
+                @* Ajax GET / Getting the _CategoryAddPartial as Modal form starts here *@
+
+                $(function () {
+                    let url = '@Url.Action("Add",controller:"Category")';
+                    let placeHolderDiv = $('#modalPlaceHolder');
+
+                    $('#btnAdd').click(function () {
+                        $.get(url).done(function (data) {
+                            placeHolderDiv.html(data);
+                            placeHolderDiv.find(".modal").modal('show');
+                        });
+                    });
+                    @* Ajax GET / Getting the _CategoryAddPartial as Modal form ends here *@
+                    @* Ajax POST / Posting the FormData as CategoryAddDto starts here *@
+
+                });
+
             });
         </script>
 
