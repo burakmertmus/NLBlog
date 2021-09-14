@@ -44,7 +44,7 @@ namespace NLBlog.Mvc.Areas.Admin.Controllers
                 {
                     var categoryAddAjaxModel = JsonSerializer.Serialize(new CategoryAddAjaxViewModel { 
                         CategoryDto = result.Data,
-                        CategoryAddPartial = await this.RenderViewToStringAsync("_CategoryAddPartial",categoryAddDto)
+                        CategoryAddPartial = await this.RenderViewToStringAsync("_CategoryAddPartial", categoryAddDto)
                     });
                     return Json(categoryAddAjaxModel);
                 }

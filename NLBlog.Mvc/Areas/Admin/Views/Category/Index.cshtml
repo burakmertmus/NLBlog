@@ -337,7 +337,7 @@
                                 let categoryAddAjaxModel = jQuery.parseJSON(data);
                                 console.log(categoryAddAjaxModel);
                                 let newFormBody = $('.modal-body', categoryAddAjaxModel.CategoryAddPartial);
-                                placeHolderDiv.find('.moda-body').replaceWith(newFormBody);
+                                placeHolderDiv.find('.modal-body').replaceWith(newFormBody);
                                 
                                 let isValid = newFormBody.find('[name="IsValid"]').val() === 'True';
                                 console.log(isValid);
