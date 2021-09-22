@@ -11,8 +11,6 @@ namespace NLBlog.Data.Abstract
         IArticleRepository Articles { get; } //unitofwork.Articles
         ICategoryRepository Categories { get; }
         ICommentRepository Comments { get; }
-        IRoleRepository Roles { get; }
-        IUserRepository Users { get; } //_unitofWork.Categories.AddAsync();
 
         Task<int> SaveAsync();
 
