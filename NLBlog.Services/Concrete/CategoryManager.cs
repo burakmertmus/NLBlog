@@ -24,22 +24,9 @@ namespace NLBlog.Services.Concrete
             _mapper = mapper;
         }
 
+        
         public async Task<IDataResult<CategoryDto>> Add(CategoryAddDto categoryAddDto, string createdByName)
         {
-
-            //await _unitOfWork.Categories.AddAsync(
-            //    new Category 
-            //{
-            //Name=categoryAddDto.Name,
-            //Description=categoryAddDto.Description,
-            //Note=categoryAddDto.Note,
-            //IsActive=categoryAddDto.IsActive,
-            //CreatedByName=createdByName,
-            //CreatedDate=DateTime.Now,
-            //ModifiedByName=createdByName,
-            //ModifiedDate=DateTime.Now,
-            //IsDeleted=false
-            //}).ContinueWith(t=>_unitOfWork.SaveAsync());
 
             var category = _mapper.Map<Category>(categoryAddDto);
             category.CreatedByName = createdByName;
@@ -59,10 +46,24 @@ namespace NLBlog.Services.Concrete
                 });
         }
 
+        public async Task<IDataResult<CategoryUpdateDto>> GetCategoryUpdateDto(int categoryId)
+        {
+            var result = await _unitOfWork.Categories.AnyAsync(c=>c.Id==categoryId);
+            if (result)
+            {
+                var category = await _unitOfWork.Categories.GetAsync(c => c.Id == categoryId);
+                var categoryUpdateDto = _mapper.Map<CategoryUpdateDto>(category);
+                return new DataResult<CategoryUpdateDto>(ResultStatus.Success, categoryUpdateDto);
+            }
+            else {
+                return new DataResult<CategoryUpdateDto>(ResultStatus.Error, message: "Böyle bir kategori bulunamadı",data:null);
+            }
+
+        }
         public async Task<IDataResult<CategoryDto>> Update(CategoryUpdateDto categoryUpdateDto, string modifiedByName)
         {
-
-            var category = _mapper.Map<Category>(categoryUpdateDto);
+            var oldCategory = await _unitOfWork.Categories.GetAsync(c=>c.Id==categoryUpdateDto.Id);
+            var category = _mapper.Map<CategoryUpdateDto,Category>(categoryUpdateDto,oldCategory);
             category.ModifiedByName = modifiedByName;
             var updatedCategory = await _unitOfWork.Categories.UpdateAsync(category);
             await _unitOfWork.SaveAsync();
@@ -192,8 +193,6 @@ namespace NLBlog.Services.Concrete
             return new DataResult<Category>(ResultStatus.Error, message: "Kategori bulunamadı.", data: null);
         }
 
-       
-
-
+        
     }
 }
