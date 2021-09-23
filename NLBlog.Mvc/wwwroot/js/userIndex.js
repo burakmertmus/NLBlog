@@ -280,10 +280,10 @@
     });
 
     // data table ends here 
-    // Ajax get / getting the _categoryaddpartial as modal form starts here 
+    // Ajax get / getting the _UserAddpartial as modal form starts here 
 
     $(function () {
-        let url = '/Admin/Category/Add/';
+        let url = '/Admin/User/Add/';
         let placeHolderDiv = $('#modalPlaceHolder');
 
         $('#btnAdd').click(function () {
