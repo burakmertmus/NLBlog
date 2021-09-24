@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using NLBlog.Mvc.AutoMaper.Profiles;
 using NLBlog.Services.AutoMapper.Profiles;
 using NLBlog.Services.Extensions;
 using System;
@@ -25,7 +26,7 @@ namespace NLBlog.Mvc
                 opt.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
             });
             services.AddSession();
-            services.AddAutoMapper(typeof(CategoryProfile),typeof(ArticleProfile));
+            services.AddAutoMapper(typeof(CategoryProfile),typeof(ArticleProfile),typeof(UserProfile));
             services.LoadMyServices();
             services.ConfigureApplicationCookie(options=> {
                 options.LoginPath = new PathString("/Admin/User/Login");

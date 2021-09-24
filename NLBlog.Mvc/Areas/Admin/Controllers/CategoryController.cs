@@ -23,6 +23,7 @@ namespace NLBlog.Mvc.Areas.Admin.Controllers
             _categoryService = categoryService;
         }
 
+
         public async Task<IActionResult> Index()
         {
             var result = await _categoryService.GetAllByNonDeleted();
@@ -35,6 +36,8 @@ namespace NLBlog.Mvc.Areas.Admin.Controllers
             
             return PartialView("_CategoryAddPartial");
         }
+
+
         [HttpGet]
         public async Task <IActionResult> Update(int categoryId)
         {

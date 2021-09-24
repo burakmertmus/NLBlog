@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
@@ -9,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace NLBlog.Entities.Dtos
 {
-    public class UserAddDto
+    public class UserLoginDto
     {
 
 
@@ -36,18 +35,9 @@ namespace NLBlog.Entities.Dtos
         public string Password { get; set; }
 
 
-        [DisplayName("Telefon Numarası")]
-        [Required(ErrorMessage = "{0} boş geçilmemelidir")]
-        [MaxLength(13, ErrorMessage = "{0} {1} karakterden büyük olmalıdır.")]
-        [MinLength(13, ErrorMessage = "{0} {1} karakterden küçük olmamalıdır.")]
-        [DataType(DataType.PhoneNumber)]
-        public string  PhoneNumber { get; set; }
+        [DisplayName("Beni Hatırla")]
+        public bool RememberMe { get; set; }
 
 
-        [DisplayName("Resim")]
-        [Required(ErrorMessage = "Lütfen bir {0} seçiiz")]
-        [DataType(DataType.Upload)]
-        public IFormFile PictureFile { get; set; }
-        public string  Picture { get; set; }
     }
 }

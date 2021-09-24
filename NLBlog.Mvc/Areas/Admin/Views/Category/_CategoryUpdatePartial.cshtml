@@ -11,7 +11,7 @@
             </div>
             <div class="modal-body">
                 <form asp-action="Update" id="form-category-update">
-                    <input hidden="true" asp-for="Id" />
+                    <input type="hidden" asp-for="Id" />
                     <input name="IsValid" type="hidden" value="@ViewData.ModelState.IsValid.ToString()" />
                     <div asp-validation-summary="All" class="text-danger" id="validation-summary" aria-hidden="true" style="display: none;"></div>
                     <div class="form-group">
