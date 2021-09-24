@@ -18,8 +18,8 @@ namespace NLBlog.Services.Extensions
     {
         public static IServiceCollection LoadMyServices(this IServiceCollection serviceCollection)
         {
-            serviceCollection.AddDbContext<NLBlogContext>();
-            serviceCollection.AddIdentityCore<User>(options => {
+           serviceCollection.AddDbContext<NLBlogContext>();
+           serviceCollection.AddIdentityCore<User>(options => {
                 //User Password Options
                 options.Password.RequireDigit=false;
                 options.Password.RequiredLength = 5;

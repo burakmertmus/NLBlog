@@ -16,9 +16,11 @@ using System.Text.Json;
 using NLBlog.Mvc.Areas.Admin.Model;
 using System.Text.Json.Serialization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 
 namespace NLBlog.Mvc.Areas.Admin.Controllers
 {
+
     [Area("Admin")]
     public class UserController : Controller
     {
@@ -35,11 +37,14 @@ namespace NLBlog.Mvc.Areas.Admin.Controllers
             _signInManager = signInManager;
         }
 
+
+        //Normal Şartlarda Identity içinde bir area oluşturmalı, Kullanıcı işlemlerini orada halledip kullanıcıyı action veya sayfalara yönlendirmeli.
+        [Authorize]
         public async Task<IActionResult> Index()
         {
             var users = await _userManager.Users.ToListAsync();
 
-            ImageDelete("test");
+            
             return View(new UserListDto
             {
                 Users = users,
@@ -53,16 +58,39 @@ namespace NLBlog.Mvc.Areas.Admin.Controllers
             return View("UserLogin");
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Login(UserLoginDto userLoginDto)
         {
             if (ModelState.IsValid)
             {
-
+                var user = await _userManager.FindByEmailAsync(userLoginDto.Email);
+                if (user!=null)
+                {
+                    var result = await _signInManager.PasswordSignInAsync(user,userLoginDto.Password,userLoginDto.RememberMe, false);
+                    if (result.Succeeded)
+                    {
+                        return RedirectToAction("Index","Home");
+                    }else
+                    {
+                        ModelState.AddModelError("","E-posta adresiniz veya şifreniz yanlıştır");
+                        return View("UserLogin");
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError("", "E-posta adresiniz veya şifreniz yanlıştır");
+                    return View("UserLogin");
+                }
             }
-            return View("UserLogin");
+            else
+            {
+                return View("UserLogin");
+            }
+            
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<JsonResult> GetAllUsers()
         {
@@ -77,12 +105,14 @@ namespace NLBlog.Mvc.Areas.Admin.Controllers
             return Json(userListDto);
         }
 
+        [Authorize]
         [HttpGet]
         public IActionResult Add()
         {
             return PartialView("_UserAddPartial");
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Add(UserAddDto userAddDto)
         {
@@ -132,6 +162,7 @@ namespace NLBlog.Mvc.Areas.Admin.Controllers
             
         }
 
+        [Authorize]
         public async Task<JsonResult> Delete(int userId)
         {
             var user = await _userManager.FindByIdAsync(userId.ToString());
@@ -162,6 +193,7 @@ namespace NLBlog.Mvc.Areas.Admin.Controllers
             
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<PartialViewResult> Update(int userId) 
         {
@@ -172,6 +204,7 @@ namespace NLBlog.Mvc.Areas.Admin.Controllers
 
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Update(UserUpdateDto userUpdateDto)
         {
@@ -235,6 +268,7 @@ namespace NLBlog.Mvc.Areas.Admin.Controllers
             }
         }
 
+        [Authorize]
         public async Task<string> ImageUpload(string userName,IFormFile pictureFile)
         {
             //~/img/user.Picture
@@ -252,6 +286,7 @@ namespace NLBlog.Mvc.Areas.Admin.Controllers
                 return fileName;
         }
 
+        [Authorize]
         public bool ImageDelete(string pictureName)
         {
             pictureName = "linustorvalds2_865_1_26_17_23_9_2021.png";

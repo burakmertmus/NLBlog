@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using NLBlog.Entities.Dtos;
 using NLBlog.Mvc.Areas.Admin.Model;
 using NLBlog.Services.Abstract;
@@ -14,6 +15,7 @@ using System.Threading.Tasks;
 namespace NLBlog.Mvc.Areas.Admin.Controllers
 {
     [Area(areaName:"Admin")]
+    [Authorize]
     public class CategoryController : Controller
     {
         private readonly ICategoryService _categoryService;
