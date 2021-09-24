@@ -11,14 +11,6 @@ namespace NLBlog.Entities.Dtos
     public class UserLoginDto
     {
 
-
-        [DisplayName("Kullanıcı Adı")]
-        [Required(ErrorMessage = "{0} boş geçilmemelidir")]
-        [MaxLength(50, ErrorMessage = "{0} {1} karakterden büyük olmalıdır.")]
-        [MinLength(3, ErrorMessage = "{0} {1} karakterden küçük olmamalıdır.")]
-        public string UserName { get; set; }
-
-
         [DisplayName("E-Posta Adresi")]
         [Required(ErrorMessage = "{0} boş geçilmemelidir")]
         [MaxLength(100, ErrorMessage = "{0} {1} karakterden büyük olmalıdır.")]

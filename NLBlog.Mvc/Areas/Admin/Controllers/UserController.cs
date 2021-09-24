@@ -58,7 +58,7 @@ namespace NLBlog.Mvc.Areas.Admin.Controllers
             return View("UserLogin");
         }
 
-        [Authorize]
+        
         [HttpPost]
         public async Task<IActionResult> Login(UserLoginDto userLoginDto)
         {

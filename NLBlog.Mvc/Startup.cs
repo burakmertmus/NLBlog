@@ -28,8 +28,8 @@ namespace NLBlog.Mvc
             });
             services.AddSession();
             services.AddAutoMapper(typeof(CategoryProfile),typeof(ArticleProfile),typeof(UserProfile));
+            services.AddIdentity<User, Role>();
             services.LoadMyServices();
-            services.AddIdentity<User,Role>();
             services.ConfigureApplicationCookie(options =>
             {
                 options.LoginPath = new PathString("/Admin/User/Login");
