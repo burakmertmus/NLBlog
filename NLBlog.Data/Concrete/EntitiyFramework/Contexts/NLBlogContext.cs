@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace NLBlog.Data.Concrete.EntitiyFramework.Contexts
 {
-    public class NLBlogContext:IdentityDbContext<User,Role,int,UserClaim,UserRole,UserLogin,RoleClaim,UserToken>
+    public class NLBlogContext: IdentityDbContext<User, Role, int, UserClaim, UserRole, UserLogin, RoleClaim, UserToken>
     {
         public DbSet<Article> Articles { get; set; }
         public DbSet<Category> Categories { get; set; }

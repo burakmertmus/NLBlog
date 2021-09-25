@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 namespace NLBlog.Mvc.Areas.Admin.Controllers
 {
     [Area(areaName:"Admin")]
-    [Authorize]
+    [Authorize(Roles = "Admin,Editor")]
     public class CategoryController : Controller
     {
         private readonly ICategoryService _categoryService;

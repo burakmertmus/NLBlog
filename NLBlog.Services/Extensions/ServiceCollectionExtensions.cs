@@ -19,23 +19,39 @@ namespace NLBlog.Services.Extensions
         public static IServiceCollection LoadMyServices(this IServiceCollection serviceCollection)
         {
            serviceCollection.AddDbContext<NLBlogContext>();
-           serviceCollection.AddIdentityCore<User>(options => {
-                //User Password Options
-                options.Password.RequireDigit=false;
+            //serviceCollection.AddIdentity<User,Role>(options => {
+            //     //User Password Options
+            //     options.Password.RequireDigit=false;
+            //     options.Password.RequiredLength = 5;
+            //     options.Password.RequiredUniqueChars=2;
+            //     options.Password.RequireNonAlphanumeric=false;
+            //     options.Password.RequireLowercase = false;
+            //     options.Password.RequireUppercase = false;
+            //     //UserName and Email Options
+            //     options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
+            //     options.User.RequireUniqueEmail = true;
+            //     options.SignIn.RequireConfirmedAccount = false;
+            // }).AddEntityFrameworkStores<NLBlogContext>();
+
+            serviceCollection.AddIdentity<User, Role>(options =>
+            {
+                // User Password Options
+                options.Password.RequireDigit = false;
                 options.Password.RequiredLength = 5;
-                options.Password.RequiredUniqueChars=2;
-                options.Password.RequireNonAlphanumeric=false;
+                options.Password.RequiredUniqueChars = 0;
+                options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequireLowercase = false;
                 options.Password.RequireUppercase = false;
-                //UserName and Email Options
-                options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+";
+                // User Username and Email Options
+                options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._@+$";
                 options.User.RequireUniqueEmail = true;
-                options.SignIn.RequireConfirmedAccount = false;
-            }).AddRoles<Role>().AddEntityFrameworkStores<NLBlogContext>();
+            }).AddEntityFrameworkStores<NLBlogContext>();
+
 
             serviceCollection.AddScoped<IUnitOfWork, UnitOfWork>();
             serviceCollection.AddScoped<ICategoryService, CategoryManager>();
             serviceCollection.AddScoped<IArticleService, ArticleManager>();
+            
             return serviceCollection;
 
 

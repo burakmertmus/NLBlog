@@ -5,6 +5,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using NLBlog.Entities.Concrete;
 using NLBlog.Mvc.AutoMaper.Profiles;
+using NLBlog.Mvc.Helpers.Abstract;
+using NLBlog.Mvc.Helpers.Concrete;
 using NLBlog.Services.AutoMapper.Profiles;
 using NLBlog.Services.Extensions;
 using System;
@@ -28,8 +30,9 @@ namespace NLBlog.Mvc
             });
             services.AddSession();
             services.AddAutoMapper(typeof(CategoryProfile),typeof(ArticleProfile),typeof(UserProfile));
-            services.AddIdentity<User, Role>();
+            //services.AddIdentity<User, Role>();
             services.LoadMyServices();
+            services.AddScoped<IImageHelper, ImageHelper>();
             services.ConfigureApplicationCookie(options =>
             {
                 options.LoginPath = new PathString("/Admin/User/Login");
@@ -55,6 +58,7 @@ namespace NLBlog.Mvc
                 app.UseDeveloperExceptionPage();
                 app.UseStatusCodePages();
             }
+            
             app.UseSession();
             app.UseStaticFiles();
             app.UseRouting();

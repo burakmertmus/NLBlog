@@ -11,7 +11,7 @@ namespace NLBlog.Mvc.Areas.Admin.Controllers
     {
 
         [Area("Admin")]
-        [Authorize]
+        [Authorize(Roles = "Admin,Editor")]
         public IActionResult Index()
         {
             return View();
