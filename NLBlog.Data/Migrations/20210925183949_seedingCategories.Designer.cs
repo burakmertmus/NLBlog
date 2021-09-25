@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NLBlog.Data.Concrete.EntitiyFramework.Contexts;
 
 namespace NLBlog.Data.Migrations
 {
     [DbContext(typeof(NLBlogContext))]
-    partial class NLBlogContextModelSnapshot : ModelSnapshot
+    [Migration("20210925183949_seedingCategories")]
+    partial class seedingCategories
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -156,12 +158,12 @@ namespace NLBlog.Data.Migrations
                         {
                             Id = 1,
                             CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2021, 9, 25, 21, 41, 7, 66, DateTimeKind.Local).AddTicks(4071),
+                            CreatedDate = new DateTime(2021, 9, 25, 21, 39, 49, 453, DateTimeKind.Local).AddTicks(6385),
                             Description = "C# ile ilgili bilgiler",
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByName = "InitialCraete",
-                            ModifiedDate = new DateTime(2021, 9, 25, 21, 41, 7, 66, DateTimeKind.Local).AddTicks(4448),
+                            ModifiedDate = new DateTime(2021, 9, 25, 21, 39, 49, 453, DateTimeKind.Local).AddTicks(6755),
                             Name = "C#",
                             Note = "C# Blog Kategorisi"
                         },
@@ -169,12 +171,12 @@ namespace NLBlog.Data.Migrations
                         {
                             Id = 2,
                             CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2021, 9, 25, 21, 41, 7, 66, DateTimeKind.Local).AddTicks(4786),
+                            CreatedDate = new DateTime(2021, 9, 25, 21, 39, 49, 453, DateTimeKind.Local).AddTicks(7087),
                             Description = "C++ ile ilgili bilgiler",
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByName = "InitialCraete",
-                            ModifiedDate = new DateTime(2021, 9, 25, 21, 41, 7, 66, DateTimeKind.Local).AddTicks(4788),
+                            ModifiedDate = new DateTime(2021, 9, 25, 21, 39, 49, 453, DateTimeKind.Local).AddTicks(7088),
                             Name = "C++",
                             Note = "C++ Blog Kategorisi"
                         },
@@ -182,12 +184,12 @@ namespace NLBlog.Data.Migrations
                         {
                             Id = 3,
                             CreatedByName = "InitialCreate",
-                            CreatedDate = new DateTime(2021, 9, 25, 21, 41, 7, 66, DateTimeKind.Local).AddTicks(4792),
+                            CreatedDate = new DateTime(2021, 9, 25, 21, 39, 49, 453, DateTimeKind.Local).AddTicks(7092),
                             Description = "Java Script ile ilgili bilgiler",
                             IsActive = true,
                             IsDeleted = false,
                             ModifiedByName = "InitialCraete",
-                            ModifiedDate = new DateTime(2021, 9, 25, 21, 41, 7, 66, DateTimeKind.Local).AddTicks(4793),
+                            ModifiedDate = new DateTime(2021, 9, 25, 21, 39, 49, 453, DateTimeKind.Local).AddTicks(7093),
                             Name = "Java Script",
                             Note = "Java Script Blog Kategorisi"
                         });
@@ -273,14 +275,14 @@ namespace NLBlog.Data.Migrations
                         new
                         {
                             Id = 1,
-                            ConcurrencyStamp = "45bf1d85-8729-4208-adc8-11e29d122ab5",
+                            ConcurrencyStamp = "4a665de3-9a10-47db-9231-ce1be8a9c313",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = 2,
-                            ConcurrencyStamp = "8b204428-71e9-4591-b8d5-357f89bcf110",
+                            ConcurrencyStamp = "2db9f864-97b1-477a-88a8-0c8ff60f32b1",
                             Name = "Editor",
                             NormalizedName = "EDITOR"
                         });
@@ -385,17 +387,17 @@ namespace NLBlog.Data.Migrations
                         {
                             Id = 1,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "faaa14bb-54cd-42d4-97ce-92c1b764be17",
+                            ConcurrencyStamp = "ba11d158-6a28-42a3-8f82-ad56188e7b08",
                             Email = "adminuser@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMINUSER@GMAIL.COM",
                             NormalizedUserName = "ADMINUSER",
-                            PasswordHash = "AQAAAAEAACcQAAAAEP+/YbNDhXTMzy6Ki2+wJy8p+wtesAeDyuCm3F71RBUrIYk4V00HuUM6/3leqNR1yg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAENFTgiWWdoQh9q7yCSZahheUTphRZgpiiQDwaLO1E4KGsIg6R/nWEFoJSeBxREE0gw==",
                             PhoneNumber = "+905555555",
                             PhoneNumberConfirmed = true,
                             Picture = "defaultUser.png",
-                            SecurityStamp = "4f3a5e87-f812-40f1-b516-2e5b1481c72d",
+                            SecurityStamp = "e81e4d68-95ae-4ae6-bcbc-0cb75b863424",
                             TwoFactorEnabled = false,
                             UserName = "adminuser"
                         },
@@ -403,17 +405,17 @@ namespace NLBlog.Data.Migrations
                         {
                             Id = 2,
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "6b40a59a-2c56-4405-a141-71e28fb7e165",
+                            ConcurrencyStamp = "96a86604-7afe-4ae7-80ab-5ad8da09c9ca",
                             Email = "editoruser@gmail.com",
                             EmailConfirmed = true,
                             LockoutEnabled = false,
                             NormalizedEmail = "EDITORUSER@GMAIL.COM",
                             NormalizedUserName = "EDITORUSER",
-                            PasswordHash = "AQAAAAEAACcQAAAAEC+D0mhK0cIAa64JyOISEAeusxLYsFjNuVyND9nYd5EZChtz4ejJjcaq9F9g4y8GTg==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEAYjl5vyz5Ye75+jUIvymMHQ9Uewfy+UzNqQkkj8jX2Y3xsPOjV18uNXNfdg3QNJtw==",
                             PhoneNumber = "+905555555",
                             PhoneNumberConfirmed = true,
                             Picture = "defaultUser.png",
-                            SecurityStamp = "26a8e3af-53d3-4592-8745-826ae78e9fcc",
+                            SecurityStamp = "f20c2aac-51ee-4f1e-92b9-f72cbbba985d",
                             TwoFactorEnabled = false,
                             UserName = "editoruser"
                         });

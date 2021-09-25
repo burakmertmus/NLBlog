@@ -65,7 +65,8 @@
                             console.log(err);
                             $('.spinner-border').hide();
                             $('#usersTable').fadeIn(1400);
-                            toastr.error(`${err.statusText}`, "İşlem başarısız !");
+
+                            toastr.error(`${err.responseText}`, 'Hata!');
                         }
 
                     });
@@ -349,6 +350,8 @@
                     },
                     error: function (err) {
                         console.log(err);
+                        toastr.error(`${err.responseText}`, 'Hata!');
+
                     }
                 });
             });
@@ -442,9 +445,10 @@
                 success: function (data) {
                     const userUpdateAjaxModel = jQuery.parseJSON(data);
                     console.log(userUpdateAjaxModel);
-                    const id = userUpdateAjaxModel.UserDto.User.Id;
-                    const tableRow = $(`[name="${id}"]`);
-
+                    if (userUpdateAjaxModel.userDto!==null) {
+                        const id = userUpdateAjaxModel.UserDto.User.Id;
+                        const tableRow = $(`[name="${id}"]`);
+                    }
                     newFormBody = $('.modal-body', userUpdateAjaxModel.UserUpdatePartial);
                     placeHolderDiv.find('.modal-body').replaceWith(newFormBody);
                     const isValid = newFormBody.find('[name="IsValid"]').val() === 'True';
@@ -479,6 +483,7 @@
                 },
                 error: function (error) {
                     console.log(error);
+                    toastr.error(`${err.responseText}`,'Hata!');
                 }
 
             });

@@ -1,4 +1,5 @@
 ﻿
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using NLBlog.Data.Abstract;
 using NLBlog.Data.Concrete;
@@ -16,9 +17,10 @@ namespace NLBlog.Services.Extensions
 {
     public static class ServiceCollectionExtensions
     {
-        public static IServiceCollection LoadMyServices(this IServiceCollection serviceCollection)
+        public static IServiceCollection LoadMyServices(this IServiceCollection serviceCollection,string connectionString)
         {
-           serviceCollection.AddDbContext<NLBlogContext>();
+
+           serviceCollection.AddDbContext<NLBlogContext>(options=>options.UseSqlServer(connectionString));
             //serviceCollection.AddIdentity<User,Role>(options => {
             //     //User Password Options
             //     options.Password.RequireDigit=false;

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NLBlog.Data.Concrete.EntitiyFramework.Contexts;
 
 namespace NLBlog.Data.Migrations
 {
     [DbContext(typeof(NLBlogContext))]
-    partial class NLBlogContextModelSnapshot : ModelSnapshot
+    [Migration("20210925184107_seedingArticles")]
+    partial class seedingArticles
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
