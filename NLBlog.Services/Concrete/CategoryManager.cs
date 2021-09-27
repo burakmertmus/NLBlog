@@ -194,6 +194,18 @@ namespace NLBlog.Services.Concrete
             return new DataResult<Category>(ResultStatus.Error, message: Messages.Category.NotFound(isPlural: false), data: null);
         }
 
-        
+        public async Task<IDataResult<int>> Count()
+        {
+            var categoriesCount = await _unitOfWork.Categories.CountAsync();
+            if (categoriesCount>-1)
+            {
+                return new DataResult<int>(ResultStatus.Success,categoriesCount);
+            }
+            else
+            {
+                return new DataResult<int>(ResultStatus.Error,data:-1,message: "Beklenmedik bir hata ile karşılaşıldı.");
+            }
+            
+        }
     }
 }
