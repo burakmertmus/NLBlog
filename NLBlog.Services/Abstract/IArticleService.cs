@@ -11,16 +11,18 @@ namespace NLBlog.Services.Abstract
 {
     public interface IArticleService
     {
-        Task<IDataResult<ArticleDto>> Get(int articleId);
-        Task<IDataResult<ArticleListDto>> GetAll();
-        Task<IDataResult<ArticleListDto>> GetAllByNonDeleted();
-        Task<IDataResult<ArticleListDto>> GetAllByNonDeletedAndAndActive();
-        Task<IDataResult<ArticleListDto>> GetAllByCategory(int categoryId);
+
+
+        Task<IDataResult<ArticleDto>> GetAsync(int articleId);
+        Task<IDataResult<ArticleListDto>> GetAllAsync();
+        Task<IDataResult<ArticleListDto>> GetAllByNonDeletedAsync();
+        Task<IDataResult<ArticleListDto>> GetAllByNonDeletedAndAndActiveAsync();
+        Task<IDataResult<ArticleListDto>> GetAllByCategoryAsync(int categoryId);
         Task<IResult> Add(ArticleAddDto articleAddDto, string createdByName);
         Task<IResult> Update(ArticleUpdateDto articleUpdateDto, string modifiedByName);
         Task<IResult> Delete(int articleId, string modifiedByName);
         Task<IResult> HardDelete(int articleId);
-        Task<IDataResult<int>> Count();
-        Task<IDataResult<int>> CountByIsDeleted();
+        Task<IDataResult<int>> CountAsync();
+        Task<IDataResult<int>> CountByNonDeletedAsync();
     }
 }

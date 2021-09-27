@@ -43,7 +43,7 @@
                 "fill": "Bütün hücreleri <i>%d<\/i> ile doldur"
             },
             "buttons": {
-                "collection": "Koleksiyon <span class=\"ui-button-icon-primary ui-icon ui-icon-triangle-1-s\"><\/span>",
+                
                 "colvis": "Sütun görünürlüğü",
                 "colvisRestore": "Görünürlüğü eski haline getir",
                 "copySuccess": {
@@ -203,6 +203,7 @@
                     "title": "Kayıtları sil"
                 }
             }
-        }
+        },
+        "order": [[4,"desc"]]
     });
 });

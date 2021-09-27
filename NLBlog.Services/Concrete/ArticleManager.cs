@@ -38,7 +38,7 @@ namespace NLBlog.Services.Concrete
             return new Result(ResultStatus.Success, Messages.Article.Add(article.Title));
         }
 
-        public async Task<IDataResult<int>> Count()
+        public async Task<IDataResult<int>> CountAsync()
         {
             var articlesCount = await _unitOfWork.Articles.CountAsync();
             if (articlesCount > -1)
@@ -51,7 +51,7 @@ namespace NLBlog.Services.Concrete
             }
         }
 
-        public async Task<IDataResult<int>> CountByIsDeleted()
+        public async Task<IDataResult<int>> CountByNonDeletedAsync()
         {
             var articlesCount = await _unitOfWork.Articles.CountAsync(a=>!a.IsDeleted);
             if (articlesCount > -1)
@@ -82,7 +82,7 @@ namespace NLBlog.Services.Concrete
             return new Result(ResultStatus.Error, message: "Makale bulunamadı");
         }
 
-        public async Task<IDataResult<ArticleDto>> Get(int articleId)
+        public async Task<IDataResult<ArticleDto>> GetAsync(int articleId)
         {
             var article = await _unitOfWork.Articles.GetAsync(a=>a.Id==articleId,a => a.User, a=>a.Category);
             if (article!=null)
@@ -98,7 +98,7 @@ namespace NLBlog.Services.Concrete
             return new DataResult<ArticleDto>(ResultStatus.Error,message: Messages.Article.NotFound(false),data:null);
         }
 
-        public async Task<IDataResult<ArticleListDto>> GetAll()
+        public async Task<IDataResult<ArticleListDto>> GetAllAsync()
         {
             var articles = await _unitOfWork.Articles.GetAllAsync(predicate:null, a => a.User, a => a.Category);
             if (articles.Count >-1)
@@ -113,7 +113,7 @@ namespace NLBlog.Services.Concrete
             return new DataResult<ArticleListDto>(ResultStatus.Error, message: Messages.Article.NotFound(true), data: null);
         }
 
-        public async Task<IDataResult<ArticleListDto>> GetAllByCategory(int categoryId)
+        public async Task<IDataResult<ArticleListDto>> GetAllByCategoryAsync(int categoryId)
         {
             var result = await _unitOfWork.Categories.AnyAsync(c => c.Id== categoryId);
             if (result)
@@ -138,7 +138,7 @@ namespace NLBlog.Services.Concrete
 
         }
 
-        public async Task<IDataResult<ArticleListDto>> GetAllByNonDeleted()
+        public async Task<IDataResult<ArticleListDto>> GetAllByNonDeletedAsync()
         {
             var articles = await _unitOfWork.Articles.GetAllAsync(a => !a.IsDeleted, a => a.User, ar => ar.Category);
             if (articles.Count > -1)
@@ -153,7 +153,7 @@ namespace NLBlog.Services.Concrete
             return new DataResult<ArticleListDto>(ResultStatus.Error, message: Messages.Article.NotFound(true), data: null);
         }
 
-        public async Task<IDataResult<ArticleListDto>> GetAllByNonDeletedAndAndActive()
+        public async Task<IDataResult<ArticleListDto>> GetAllByNonDeletedAndAndActiveAsync()
         {
             var articles = await _unitOfWork.Articles.GetAllAsync(a => !a.IsDeleted&&a.IsActive, a => a.User, ar => ar.Category);
             if (articles.Count > -1)
