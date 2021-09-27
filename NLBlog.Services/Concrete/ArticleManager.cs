@@ -51,6 +51,19 @@ namespace NLBlog.Services.Concrete
             }
         }
 
+        public async Task<IDataResult<int>> CountByIsDeleted()
+        {
+            var articlesCount = await _unitOfWork.Articles.CountAsync(a=>!a.IsDeleted);
+            if (articlesCount > -1)
+            {
+                return new DataResult<int>(ResultStatus.Success, articlesCount);
+            }
+            else
+            {
+                return new DataResult<int>(ResultStatus.Error, data: -1, message: "Beklenmedik bir hata ile karşılaşıldı.");
+            }
+        }
+
         public async Task<IResult> Delete(int articleId, string modifiedByName)
         {
             var result = await _unitOfWork.Articles.AnyAsync(c => c.Id == articleId);

@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace NLBlog.Services.Concrete
 {
-    public class CommentManager : IComentService
+    public class CommentManager : ICommentService
     {
         private readonly IUnitOfWork _unitOfWork;
 
@@ -24,6 +24,19 @@ namespace NLBlog.Services.Concrete
         {
     
             var commentsCount = await _unitOfWork.Comments.CountAsync();
+            if (commentsCount > -1)
+            {
+                return new DataResult<int>(ResultStatus.Success, commentsCount);
+            }
+            else
+            {
+                return new DataResult<int>(ResultStatus.Error, data: -1, message: "Beklenmedik bir hata ile karşılaşıldı.");
+            }
+        }
+
+        public async Task<IDataResult<int>> CountByIsDeleted()
+        {
+            var commentsCount = await _unitOfWork.Comments.CountAsync(c=>!c.IsDeleted);
             if (commentsCount > -1)
             {
                 return new DataResult<int>(ResultStatus.Success, commentsCount);

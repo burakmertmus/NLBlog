@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace NLBlog.Services.Abstract
 {
-    interface IComentService
+    public interface ICommentService
     {
         Task<IDataResult<int>> Count();
+        Task<IDataResult<int>> CountByIsDeleted();
     }
 }
