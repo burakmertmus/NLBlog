@@ -15,7 +15,7 @@ namespace NLBlog.Entities.Dtos
         [Required(ErrorMessage ="{0} alanı boş olmamalıdır.")]
         [MaxLength(100,ErrorMessage ="{0} alanı {1} karakterden çok olmamalıdır.")]
         [MinLength(5,ErrorMessage ="{0} alanı {1} karakterden az olmamalıdır.")]
-        public string Tiltle { get; set; }
+        public string Title { get; set; }
         [DisplayName("İçerik")]
         [Required(ErrorMessage = "{0} alanı boş olmamalıdır.")]
         [MinLength(20, ErrorMessage = "{0} alanı {1} karakterden az olmamalıdır.")]

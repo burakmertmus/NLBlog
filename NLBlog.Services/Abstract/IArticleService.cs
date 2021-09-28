@@ -18,10 +18,10 @@ namespace NLBlog.Services.Abstract
         Task<IDataResult<ArticleListDto>> GetAllByNonDeletedAsync();
         Task<IDataResult<ArticleListDto>> GetAllByNonDeletedAndAndActiveAsync();
         Task<IDataResult<ArticleListDto>> GetAllByCategoryAsync(int categoryId);
-        Task<IResult> Add(ArticleAddDto articleAddDto, string createdByName);
-        Task<IResult> Update(ArticleUpdateDto articleUpdateDto, string modifiedByName);
-        Task<IResult> Delete(int articleId, string modifiedByName);
-        Task<IResult> HardDelete(int articleId);
+        Task<IResult> AddAsync(ArticleAddDto articleAddDto, string createdByName);
+        Task<IResult> UpdateAsync(ArticleUpdateDto articleUpdateDto, string modifiedByName);
+        Task<IResult> DeleteAsync(int articleId, string modifiedByName);
+        Task<IResult> HardDeleteAsync(int articleId);
         Task<IDataResult<int>> CountAsync();
         Task<IDataResult<int>> CountByNonDeletedAsync();
     }

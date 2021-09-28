@@ -25,7 +25,7 @@ namespace NLBlog.Services.Concrete
             _mapper = mapper;
         }
 
-        public async Task<IResult> Add(ArticleAddDto articleAddDto, string createdByName)
+        public async Task<IResult> AddAsync(ArticleAddDto articleAddDto, string createdByName)
         {
 
             var article = _mapper.Map<Article>(articleAddDto);
@@ -64,7 +64,7 @@ namespace NLBlog.Services.Concrete
             }
         }
 
-        public async Task<IResult> Delete(int articleId, string modifiedByName)
+        public async Task<IResult> DeleteAsync(int articleId, string modifiedByName)
         {
             var result = await _unitOfWork.Articles.AnyAsync(c => c.Id == articleId);
             if (result)
@@ -168,7 +168,7 @@ namespace NLBlog.Services.Concrete
             return new DataResult<ArticleListDto>(ResultStatus.Error, message: Messages.Article.NotFound(true), data: null);
         }
 
-        public async Task<IResult> HardDelete(int articleId)
+        public async Task<IResult> HardDeleteAsync(int articleId)
         {
             var result = await _unitOfWork.Articles.AnyAsync(c => c.Id == articleId);
             if (result)
@@ -183,7 +183,7 @@ namespace NLBlog.Services.Concrete
             return new Result(ResultStatus.Error, message: Messages.Article.NotFound(false));
         }
 
-        public async Task<IResult> Update(ArticleUpdateDto articleUpdateDto, string modifiedByName)
+        public async Task<IResult> UpdateAsync(ArticleUpdateDto articleUpdateDto, string modifiedByName)
         {
             var article = _mapper.Map<Article>(articleUpdateDto);
             article.ModifiedByName = modifiedByName;
