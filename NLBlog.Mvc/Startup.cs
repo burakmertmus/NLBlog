@@ -77,9 +77,10 @@ namespace NLBlog.Mvc
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseStatusCodePagesWithRedirects("/NotFound");
+                
                 //app.UseStatusCodePages();
             }
+            app.UseStatusCodePagesWithRedirects("/NotFound");
             //app.Use(async (context, next) =>
             //{
             //    await next();
