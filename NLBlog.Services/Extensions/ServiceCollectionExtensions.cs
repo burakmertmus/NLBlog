@@ -8,10 +8,7 @@ using NLBlog.Entities.Concrete;
 using NLBlog.Services.Abstract;
 using NLBlog.Services.Concrete;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace NLBlog.Services.Extensions
 {
