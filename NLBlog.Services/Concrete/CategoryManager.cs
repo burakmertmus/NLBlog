@@ -25,7 +25,12 @@ namespace NLBlog.Services.Concrete
             _mapper = mapper;
         }
 
-        
+        /// <summary>
+        /// Verilen CategoryAddDto ve CreateByName parametresine ait  bilgiler ile yeni bir Category ekler.
+        /// </summary>
+        /// <param name="categoryAddDto">CategoryAddDto tipinde eklenecek kategori bilgileri</param>
+        /// /// <param name="createdByName">string tipinde kullanıcının kullanıcı adı</param>
+        /// <returns> Asenkron bir operasyon ile Task Olarak bizlere ekleme işleminin sonucu DataResult tipinde döner.</returns>
         public async Task<IDataResult<CategoryDto>> AddAsync(CategoryAddDto categoryAddDto, string createdByName)
         {
 
@@ -47,6 +52,12 @@ namespace NLBlog.Services.Concrete
                 });
         }
 
+
+        /// <summary>
+        /// Verilen ID parametresine ait kategorinin CategoryUpdateDto temsilini geri döner
+        /// </summary>
+        /// <param name="categoryId">0'dan büyük integer bir ID değeri</param>
+        /// <returns> Asekron bir operasyon ile Task olarak işlem sonucu Data Result tipinde geri döner.</returns>
         public async Task<IDataResult<CategoryUpdateDto>> GetCategoryUpdateDtoAsync(int categoryId)
         {
             var result = await _unitOfWork.Categories.AnyAsync(c=>c.Id==categoryId);

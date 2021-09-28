@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <Folder Include="Model\" />
+    <Folder Include="Views\NotFound\" />
   </ItemGroup>
 
   <ItemGroup>

@@ -92,7 +92,7 @@ namespace NLBlog.Mvc.Areas.Admin.Controllers
         }
 
 
-        [Authorize]
+        [Authorize] 
         [HttpGet]
         public async Task<IActionResult> LogOut()
         {

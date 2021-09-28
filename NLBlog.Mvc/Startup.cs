@@ -56,6 +56,7 @@ namespace NLBlog.Mvc
                 };
                 options.SlidingExpiration = true;
                 options.ExpireTimeSpan = System.TimeSpan.FromDays(7);
+                
                 options.AccessDeniedPath = new PathString("/Admin/User/AccessDenied");
             });
         }
@@ -66,9 +67,18 @@ namespace NLBlog.Mvc
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseStatusCodePages();
+                app.UseStatusCodePagesWithRedirects("/NotFound");
+                //app.UseStatusCodePages();
             }
-            
+            //app.Use(async (context, next) =>
+            //{
+            //    await next();
+            //    if (context.Response.StatusCode == 404)
+            //    {
+            //        context.Request.Path = "/Error";
+            //        await next();
+            //    }
+            //});
             app.UseSession();
             app.UseStaticFiles();
             app.UseRouting();
@@ -81,6 +91,7 @@ namespace NLBlog.Mvc
                     areaName:"Admin",
                     pattern:"Admin/{controller=Home}/{action=Index}/{id?}"
                     );
+                
                 endpoints.MapDefaultControllerRoute();
             });
         }

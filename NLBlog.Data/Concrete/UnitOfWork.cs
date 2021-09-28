@@ -12,9 +12,9 @@ namespace NLBlog.Data.Concrete
     public class UnitOfWork : IUnitOfWork
     {
         private readonly NLBlogContext _context;
-        private EfArticleRepository _articleRepository;
-        private EfCategoryRepository _categoryRepository;
-        private EfCommentRepository _commentRepository;
+        private readonly EfArticleRepository _articleRepository;
+        private readonly EfCategoryRepository _categoryRepository;
+        private readonly EfCommentRepository _commentRepository;
 
         public UnitOfWork(NLBlogContext context)
         {
