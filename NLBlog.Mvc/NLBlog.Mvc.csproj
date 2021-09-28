@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Areas\Admin\Views\Comment\" />
     <Folder Include="Model\" />
     <Folder Include="Views\NotFound\" />
   </ItemGroup>

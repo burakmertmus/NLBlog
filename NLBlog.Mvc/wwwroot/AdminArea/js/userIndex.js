@@ -40,7 +40,7 @@
                                         user.UserName,
                                         user.Email,
                                         user.PhoneNumber,
-                                        `<img src="/img/${user.Picture}" alt="${user.UserName}" class="my-image-table"/>`,
+                                        `<img src="/img/userImages/${user.Picture}" alt="${user.UserName}" class="my-image-table"/>`,
 
                                         `
                                         <button class="btn btn-primary btn-sm btn-update" data-id="${user.Id}"><span class="fas fa-edit"></span></button>
@@ -325,7 +325,7 @@
                                 userAddAjaxModel.UserDto.User.UserName,
                                 userAddAjaxModel.UserDto.User.Email,
                                 userAddAjaxModel.UserDto.User.PhoneNumber,
-                                `<img src="/img/${userAddAjaxModel.UserDto.User.Picture}" alt="${userAddAjaxModel.UserDto.User.UserName}" class="my-image-table" />`,
+                                `<img src="/img/userImages/${userAddAjaxModel.UserDto.User.Picture}" alt="${userAddAjaxModel.UserDto.User.UserName}" class="my-image-table" />`,
                                 
                                 `
                                     <button class="btn btn-primary btn-sm btn-update" data-id="${userAddAjaxModel.UserDto.User.Id}"><span class="fas fa-edit"></span></button>
@@ -460,7 +460,7 @@
                             userUpdateAjaxModel.UserDto.User.UserName,
                             userUpdateAjaxModel.UserDto.User.Email,
                             userUpdateAjaxModel.UserDto.User.PhoneNumber,
-                            `<img src="/img/${userUpdateAjaxModel.UserDto.User.Picture}" alt="${userUpdateAjaxModel.UserDto.User.UserName}" class="my-image-table"/>`,
+                            `<img src="/img/userImages/${userUpdateAjaxModel.UserDto.User.Picture}" alt="${userUpdateAjaxModel.UserDto.User.UserName}" class="my-image-table"/>`,
 
                             `
                                     <button class="btn btn-primary btn-sm btn-update" data-id="${userUpdateAjaxModel.UserDto.User.Id}"><span class="fas fa-edit"></span></button>

@@ -1,5 +1,5 @@
 ﻿$(document).ready(function () {
-    $('#articleTable').DataTable({
+    $('#articlesDashboardTable').DataTable({
         language:
         {
             "emptyTable": "Tabloda herhangi bir veri mevcut değil",
