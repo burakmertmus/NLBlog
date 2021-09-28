@@ -11,8 +11,6 @@ namespace NLBlog.Services.Abstract
 {
     public interface IArticleService
     {
-
-
         Task<IDataResult<ArticleDto>> GetAsync(int articleId);
         Task<IDataResult<ArticleListDto>> GetAllAsync();
         Task<IDataResult<ArticleListDto>> GetAllByNonDeletedAsync();
