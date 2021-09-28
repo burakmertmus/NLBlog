@@ -20,7 +20,7 @@ namespace NLBlog.Services.Extensions
         public static IServiceCollection LoadMyServices(this IServiceCollection serviceCollection,string connectionString)
         {
 
-           serviceCollection.AddDbContext<NLBlogContext>(options=>options.UseSqlServer(connectionString));
+           serviceCollection.AddDbContext<NLBlogContext>(options=>options.UseMySql(connectionString, new MySqlServerVersion(new Version(8, 0, 23))));
             //serviceCollection.AddIdentity<User,Role>(options => {
             //     //User Password Options
             //     options.Password.RequireDigit=false;

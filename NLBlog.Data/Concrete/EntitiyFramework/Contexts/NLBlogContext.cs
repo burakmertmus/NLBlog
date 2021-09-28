@@ -28,6 +28,7 @@ namespace NLBlog.Data.Concrete.EntitiyFramework.Contexts
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            
             modelBuilder.ApplyConfiguration(new ArticleMap());
             modelBuilder.ApplyConfiguration(new CategoryMap());
             modelBuilder.ApplyConfiguration(new CommentMap());

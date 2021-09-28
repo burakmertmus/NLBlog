@@ -40,8 +40,18 @@ namespace NLBlog.Mvc
             services.AddSession();
             services.AddAutoMapper(typeof(CategoryProfile),typeof(ArticleProfile),typeof(UserProfile));
             //services.AddIdentity<User, Role>();
-           
-            services.LoadMyServices(connectionString:Configuration.GetConnectionString("LocalDb"));
+
+            var server = "yvu4xahse0smimsc.chr7pe7iynqr.eu-west-1.rds.amazonaws.com";
+            var port = "3306";
+            var user = "j3qyo6ny68gz10yi";
+            var password = "z2nbcm1clvowg94k";
+            var database = "pizn6hdzk5nuz9ms";
+
+
+            var ConnectionString = $"Server={server},{port};Initial Catalog={database};User ID={user};Password={password}";
+
+            //services.LoadMyServices(connectionString:Configuration.GetConnectionString("LocalDb"));
+            services.LoadMyServices(connectionString: ConnectionString);
             services.AddScoped<IImageHelper, ImageHelper>();
             services.ConfigureApplicationCookie(options =>
             {

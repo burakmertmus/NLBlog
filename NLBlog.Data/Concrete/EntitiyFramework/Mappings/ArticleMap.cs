@@ -18,7 +18,6 @@ namespace NLBlog.Data.Concrete.EntitiyFramework.Mappings
             builder.Property(a => a.Title).HasMaxLength(100);
             builder.Property(a => a.Title).IsRequired(true);
             builder.Property(a => a.Content).IsRequired(true);
-            builder.Property(a => a.Content).HasColumnType("NVARCHAR(MAX)");
             builder.Property(a => a.Date).IsRequired(true);
             builder.Property(a => a.SeoAuthor).IsRequired();
             builder.Property(a => a.SeoAuthor).HasMaxLength(50);
