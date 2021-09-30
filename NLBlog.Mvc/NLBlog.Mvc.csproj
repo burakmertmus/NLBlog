@@ -10,6 +10,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\NLBlog.Data\NLBlog.Data.csproj" />
+    <ProjectReference Include="..\NLBlog.Entities\NLBlog.Entities.csproj" />
     <ProjectReference Include="..\NLBlog.Services\NLBlog.Services.csproj" />
     <ProjectReference Include="..\NLBLog.Shared\NLBlog.Shared.csproj" />
   </ItemGroup>
