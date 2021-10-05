@@ -41,11 +41,11 @@ namespace NLBlog.Mvc
             services.AddAutoMapper(typeof(CategoryProfile),typeof(ArticleProfile),typeof(UserProfile));
             //services.AddIdentity<User, Role>();
 
-            var server = "yvu4xahse0smimsc.chr7pe7iynqr.eu-west-1.rds.amazonaws.com";
+            var server = "nnsgluut5mye50or.cbetxkdyhwsb.us-east-1.rds.amazonaws.com";
+            var user = "f9sbj13x5lvirq3n";
+            var password = "wqmi7mk61euv04uj";
             var port = "3306";
-            var user = "j3qyo6ny68gz10yi";
-            var password = "z2nbcm1clvowg94k";
-            var database = "pizn6hdzk5nuz9ms";
+            var database = "g743ttochkng46is";
 
 
             var ConnectionString = $"Server={server},{port};Initial Catalog={database};User ID={user};Password={password}";
